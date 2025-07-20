@@ -1,0 +1,23 @@
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: peopulse_mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: peopulse_db
+      MYSQL_USER: peopulse_user
+      MYSQL_PASSWORD: peopulse_password
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+    networks:
+      - peopulse_network
+
+volumes:
+  mysql_data:
+
+networks:
+  peopulse_network:
+    driver: bridge

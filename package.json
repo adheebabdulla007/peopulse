@@ -1,0 +1,23 @@
+{
+  "name": "peopulse",
+  "version": "1.0.0",
+  "description": "Know Your People. Drive Your Pulse. - HR Management System",
+  "private": true,
+  "scripts": {
+    "dev": "concurrently \"pnpm --filter peopulse-client dev\" \"pnpm --filter peopulse-server dev\"",
+    "build": "pnpm --filter client build && pnpm --filter server build",
+    "start": "pnpm --filter server start",
+    "lint": "pnpm --filter client lint && pnpm --filter server lint",
+    "test": "pnpm --filter client test && pnpm --filter server test",
+    "db:up": "docker compose up -d",
+    "db:down": "docker compose down",
+    "install:all": "pnpm install && pnpm --filter client install && pnpm --filter server install"
+  },
+  "keywords": ["hr", "management", "react", "express", "full-stack"],
+  "author": "Adheeb Abdulla",
+  "license": "MIT",
+  "devDependencies": {
+    "concurrently": "^8.2.2",
+    "cross-env": "^7.0.3"
+  }
+}
