@@ -1,0 +1,26 @@
+{
+  "development": {
+    "username": "peopulse_user",
+    "password": "peopulse_password",
+    "database": "peopulse_db",
+    "host": "127.0.0.1",
+    "port": 3306,
+    "dialect": "mysql"
+  },
+  "test": {
+    "username": "peopulse_user",
+    "password": "peopulse_password",
+    "database": "peopulse_db",
+    "host": "127.0.0.1",
+    "port": 3306,
+    "dialect": "mysql"
+  },
+  "production": {
+    "username": "peopulse_user",
+    "password": "peopulse_password",
+    "database": "peopulse_db",
+    "host": "127.0.0.1",
+    "port": 3306,
+    "dialect": "mysql"
+  }
+}

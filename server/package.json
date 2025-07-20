@@ -13,26 +13,32 @@
     "format": "prettier --write \"src/**/*.js\"",
     "test": "echo 'Server tests not implemented yet'"
   },
-  "keywords": ["express", "nodejs", "api", "hr", "management"],
+  "keywords": [
+    "express",
+    "nodejs",
+    "api",
+    "hr",
+    "management"
+  ],
   "author": "Adheeb Abdulla",
   "license": "MIT",
   "dependencies": {
-    "express": "^5.1.0",
-    "mysql2": "^3.11.5",
-    "sequelize": "^6.37.5",
+    "bcryptjs": "^2.4.3",
     "cors": "^2.8.5",
     "dotenv": "^16.4.7",
-    "jsonwebtoken": "^9.0.2",
-    "bcryptjs": "^2.4.3",
+    "express": "^5.1.0",
+    "express-rate-limit": "^7.4.1",
     "helmet": "^8.0.0",
-    "express-rate-limit": "^7.4.1"
+    "jsonwebtoken": "^9.0.2",
+    "mysql2": "^3.11.5",
+    "sequelize": "^6.37.5"
   },
   "devDependencies": {
-    "nodemon": "^3.1.7",
     "eslint": "^9.15.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-prettier": "^5.2.1",
-    "prettier": "^3.3.3"
+    "nodemon": "^3.1.7",
+    "prettier": "^3.3.3",
+    "sequelize-cli": "^6.6.3"
   }
 }
-
