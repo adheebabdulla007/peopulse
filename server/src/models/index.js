@@ -1,19 +1,17 @@
-import Company from './Company.js';
-import User from './User.js';
-import EmployeeProfile from './EmployeeProfile.js';
+import Sequelize from 'sequelize';
+import sequelize from '../config/db.js';
+import UserDef from './User.js';
+import CompanyDef from './Company.js';
+import EmployeeProfileDef from './EmployeeProfile.js';
 
-export default async (sequelize) => {
-  const models = {
-    Company: Company(sequelize),
-    User: User(sequelize),
-    EmployeeProfile: EmployeeProfile(sequelize),
-  };
+const User = UserDef(sequelize, Sequelize.DataTypes);
+const Company = CompanyDef(sequelize, Sequelize.DataTypes);
+const EmployeeProfile = EmployeeProfileDef(sequelize, Sequelize.DataTypes);
 
-  // Associate models here
-  models.Company.hasMany(models.User, { foreignKey: 'company_id' });
-  models.User.belongsTo(models.Company, { foreignKey: 'company_id' });
-  models.User.hasOne(models.EmployeeProfile, { foreignKey: 'user_id' });
-  models.EmployeeProfile.belongsTo(models.User, { foreignKey: 'user_id' });
+// Add associations here
+Company.hasMany(User, { foreignKey: 'company_id' });
+User.belongsTo(Company, { foreignKey: 'company_id' });
+User.hasOne(EmployeeProfile, { foreignKey: 'user_id' });
+EmployeeProfile.belongsTo(User, { foreignKey: 'user_id' });
 
-  return models;
-};
+export { User, Company, EmployeeProfile };

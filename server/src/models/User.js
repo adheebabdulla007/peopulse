@@ -28,6 +28,21 @@ export default (sequelize, DataTypes) => {
     },
     first_name: DataTypes.STRING,
     last_name: DataTypes.STRING,
+    created_at: {
+      type: DataTypes.DATE,
+      allowNull: false,
+      defaultValue: DataTypes.NOW,
+    },
+    updated_at: {
+      type: DataTypes.DATE,
+      allowNull: false,
+      defaultValue: DataTypes.NOW,
+      onUpdate: DataTypes.NOW,
+    },
+  }, {
+    timestamps: false,        // IMPORTANT: Disable Sequelize auto-timestamps
+    underscored: true,        // Makes sure fields match your schema (snake_case)
+    tableName: 'users',       // Explicitly set table name if different
   });
 
   return User;

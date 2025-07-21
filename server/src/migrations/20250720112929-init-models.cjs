@@ -1,11 +1,8 @@
-// server/src/migrations/20250720123456-init-models.js
-
-/* eslint-disable @typescript-eslint/explicit-function-return-type */
-"use strict";
+'use strict';
 
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable("Companies", {
+    await queryInterface.createTable('companies', {
       company_id: {
         type: Sequelize.INTEGER,
         primaryKey: true,
@@ -18,11 +15,18 @@ module.exports = {
       description: Sequelize.TEXT,
       created_at: {
         type: Sequelize.DATE,
-        defaultValue: Sequelize.literal("CURRENT_TIMESTAMP"),
+        allowNull: false,
+        defaultValue: Sequelize.literal('CURRENT_TIMESTAMP'),
+      },
+      updated_at: {
+        type: Sequelize.DATE,
+        allowNull: false,
+        defaultValue: Sequelize.literal('CURRENT_TIMESTAMP'),
+        onUpdate: Sequelize.literal('CURRENT_TIMESTAMP'),
       },
     });
 
-    await queryInterface.createTable("Users", {
+    await queryInterface.createTable('users', {
       user_id: {
         type: Sequelize.INTEGER,
         primaryKey: true,
@@ -33,7 +37,7 @@ module.exports = {
         allowNull: false,
       },
       role: {
-        type: Sequelize.ENUM("HR", "EMPLOYEE"),
+        type: Sequelize.ENUM('HR', 'EMPLOYEE'),
         allowNull: false,
       },
       email: {
@@ -51,9 +55,20 @@ module.exports = {
       },
       first_name: Sequelize.STRING,
       last_name: Sequelize.STRING,
+      created_at: {
+        type: Sequelize.DATE,
+        allowNull: false,
+        defaultValue: Sequelize.literal('CURRENT_TIMESTAMP'),
+      },
+      updated_at: {
+        type: Sequelize.DATE,
+        allowNull: false,
+        defaultValue: Sequelize.literal('CURRENT_TIMESTAMP'),
+        onUpdate: Sequelize.literal('CURRENT_TIMESTAMP'),
+      },
     });
 
-    await queryInterface.createTable("EmployeeProfiles", {
+    await queryInterface.createTable('employee_profiles', {
       profile_id: {
         type: Sequelize.INTEGER,
         primaryKey: true,
@@ -67,16 +82,28 @@ module.exports = {
       department: Sequelize.STRING,
       date_of_joining: Sequelize.DATEONLY,
       status: {
-        type: Sequelize.ENUM("ACTIVE", "INACTIVE", "ON_LEAVE"),
-        defaultValue: "ACTIVE",
+        type: Sequelize.ENUM('ACTIVE', 'INACTIVE', 'ON_LEAVE'),
+        defaultValue: 'ACTIVE',
+      },
+      created_at: {
+        type: Sequelize.DATE,
+        allowNull: false,
+        defaultValue: Sequelize.literal('CURRENT_TIMESTAMP'),
+      },
+      updated_at: {
+        type: Sequelize.DATE,
+        allowNull: false,
+        defaultValue: Sequelize.literal('CURRENT_TIMESTAMP'),
+        onUpdate: Sequelize.literal('CURRENT_TIMESTAMP'),
       },
     });
   },
 
-  async down(queryInterface, _Sequelize) {
-    // Drop in reverse order to avoid foreign key errors
-    await queryInterface.dropTable("EmployeeProfiles");
-    await queryInterface.dropTable("Users");
-    await queryInterface.dropTable("Companies");
+  async down(queryInterface) {
+    
+    await queryInterface.dropTable('employee_profiles');
+    await queryInterface.dropTable('users');
+    await queryInterface.dropTable('companies');
   },
 };
+

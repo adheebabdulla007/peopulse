@@ -12,8 +12,19 @@ export default (sequelize, DataTypes) => {
     description: DataTypes.TEXT,
     created_at: {
       type: DataTypes.DATE,
+      allowNull: false,
       defaultValue: DataTypes.NOW,
     },
+    updated_at: {
+      type: DataTypes.DATE,
+      allowNull: false,
+      defaultValue: DataTypes.NOW,
+      onUpdate: DataTypes.NOW,
+    },
+  }, {
+    timestamps: false,
+    underscored: true,
+    tableName: 'companies',
   });
 
   return Company;

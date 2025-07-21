@@ -31,7 +31,8 @@
     "helmet": "^8.0.0",
     "jsonwebtoken": "^9.0.2",
     "mysql2": "^3.11.5",
-    "sequelize": "^6.37.5"
+    "sequelize": "^6.37.5",
+    "validator": "^13.15.15"
   },
   "devDependencies": {
     "eslint": "^9.15.0",

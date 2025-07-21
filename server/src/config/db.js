@@ -14,5 +14,14 @@ const sequelize = new Sequelize(
     logging: process.env.NODE_ENV === 'development' ? console.log : false,
   }
 );
+(async function testDatabaseConnection() {
+  try {
+    await sequelize.authenticate();
+    console.log('Database connection has been established successfully.'); 
+  } catch (err) {
+    console.error('Unable to connect to the database:', err.message);      
+    process.exit(1); // Exit if we can't connect (optional)
+  }
+})();
 
 export default sequelize;
