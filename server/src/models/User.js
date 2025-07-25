@@ -10,7 +10,7 @@ export default (sequelize, DataTypes) => {
       allowNull: false,
     },
     role: {
-      type: DataTypes.ENUM('HR', 'EMPLOYEE'),
+      type: DataTypes.ENUM('HR', 'EMPLOYEE', 'ADMIN'),
       allowNull: false,
     },
     email: {
